@@ -12,6 +12,7 @@ import AdminProducts from './pages/admin/Products'
 import Orders from './pages/user/Orders'
 import OrderDetail from './pages/user/OrderDetail'
 import Payment from './pages/user/Payment'
+import NotFound from './pages/public/NotFound'
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
           <Route path='/orders' element={<Orders />}/>
           <Route path='/orders/:id' element={<OrderDetail />}/>
           <Route path='/payment/:id' element={<Payment />}/>
+
+          <Route path="*" element={<NotFound />} />
         </Route>
 
         <Route path='/admin' element={<AdminLayout/>}>

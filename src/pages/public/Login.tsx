@@ -13,8 +13,8 @@ const Login = () => {
                 email,
                 password,
             });
+            window.location.href = "/";
 
-            alert("login successful")
         }catch (error){
             console.error(error);
             alert('login failed')
