@@ -4,10 +4,8 @@ import type { LoginPayload, LoginResponse, SignupPayload } from "../types/user";
 import type { Product } from "../types/product";
 import type { Cart } from "../types/cart";
 
-const API_URL = import.meta.env.VITE_API_URL as string
-
 const api = axios.create({
-    baseURL: API_URL,
+    baseURL: "/api",
 });
 
 api.interceptors.request.use((config) => {
@@ -53,8 +51,8 @@ export async function getProducts(): Promise<Product[]> {
 }
 
 export async function getProductById(id: string): Promise<Product> {
-    const response = await api.get<Product>(`/products/${id}`);
-    return response.data;
+    const response = await api.get<{ product: Product }>(`/products/${id}`);
+    return response.data.product;
 }
 
 export async function getCart(): Promise<Cart> {
@@ -102,4 +100,10 @@ export async function createProduct(payload: {
 
 export async function deleteProduct(id: number): Promise<void> {
     await api.delete(`/products/${id}`);
+}
+
+
+export async function createOrder(): Promise<Order> {
+    const response = await api.post<{ order: Order }>("/orders");
+    return response.data.order;
 }

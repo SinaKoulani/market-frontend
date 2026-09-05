@@ -22,23 +22,35 @@ const AllOrders = () => {
     }, []);
 
     return (
-        <div>
-            <h1 className="text-2xl font-bold mb-4 p-4">
+        <div className="max-w-4xl mx-auto px-6 py-10">
+            <h1 className="text-3xl font-bold text-gray-900 mb-8">
                 All Orders
             </h1>
 
-            {loading && <p>Loading...</p>}
+            {loading && (
+                <p className="text-gray-400 text-center py-20">
+                    Loading...
+                </p>
+            )}
 
             {!loading && (
-                <div className="p-4">
+                <div>
                     {orders.map((order) => (
                         <div
                             key={order.id}
-                            className="border rounded p-4 shadow mb-2 mx-4"
+                            className="border rounded-xl border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 p-5 mb-4"
                         >
-                            <p>Order ID: {order.id}</p>
-                            <p>Total Price: {order.totalPrice}</p>
-                            <p>Created At: {order.createdAt}</p>
+                            <p className="text-sm text-gray-400">
+                                Order #{order.id}
+                            </p>
+
+                            <p className="text-red-600 font-bold text-xl mt-1">
+                                {order.totalPrice}
+                            </p>
+
+                            <p className="text-sm text-gray-500 mt-1">
+                                {order.createdAt}
+                            </p>
                         </div>
                     ))}
                 </div>

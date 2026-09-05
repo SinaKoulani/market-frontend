@@ -24,20 +24,44 @@ const Products = () => {
     }, []);
 
     return (
-        <div>
-            {loading && <p>Loading...</p>}
+        <div className="max-w-6xl mx-auto px-6 py-10">
+            <div className="mb-8">
+                <h1 className="text-3xl font-bold text-gray-900">
+                    All Products
+                </h1>
+
+                <p className="text-gray-500 mt-1">
+                    Browse our full collection
+                </p>
+            </div>
+
+            {loading && (
+                <p className="text-gray-400 text-center py-20">
+                    Loading...
+                </p>
+            )}
 
             {!loading && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {products.map((product) => (
                         <div
                             key={product.id}
                             onClick={() => setSelectedProductId(product.id)}
-                            className="border rounded p-4 shadow cursor-pointer"
+                            className="rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 p-6 cursor-pointer"
                         >
-                            <p>Name: {product.name}</p>
-                            <p>Price: {product.price}</p>
-                            <p>Stock: {product.stock}</p>
+                            <p className="font-semibold text-gray-900 text-lg">
+                                {product.name}
+                            </p>
+
+                            <p className="text-red-600 font-bold text-lg mt-2">
+                                {product.price}
+                            </p>
+
+                            <p className="text-sm text-gray-400 mt-1">
+                                {product.stock > 0
+                                    ? `In stock: ${product.stock}`
+                                    : "Out of stock"}
+                            </p>
                         </div>
                     ))}
                 </div>
