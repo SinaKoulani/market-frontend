@@ -102,7 +102,7 @@ const ProductDetailDrawer = ({
                             </h2>
 
                             <p className="text-red-600 font-bold text-2xl mt-1">
-                                {product.price}
+                                {product.price * quantity}
                             </p>
 
                             <p className="text-sm text-gray-400">
@@ -152,4 +152,4 @@ const ProductDetailDrawer = ({
     );
 };
 
-export default ProductDetailDrawer;
+export default ProductDetailDrawer; 
